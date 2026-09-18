@@ -21,36 +21,63 @@ AeroResolve AI assists airline support teams and passengers by processing flight
 
 ---
 
-## 🏗️ System Architecture
-
-             +-----------------------------------+
-             |   React / Vite Dashboard (:5173)   |
-             +-----------------+-----------------+
-                               |
-                         fetch() API
-                               v
-             +-----------------+-----------------+
-             |     Express Backend API (:5000)   |
-             +-----------------+-----------------+
-                               |
-              +----------------+----------------+
-              |                                 |
-              v                                 v
-  [server/data/airlineData.json]      [Google Gemini API]
-   (Ground Truth Policies)             (gemini-2.5-flash)
-              |                                 |
-              +----------------+----------------+
-                               |
-                               v
-               +---------------+---------------+
-               |     Policy Validation Engine  |
-               |      (validateAndCorrect)     |
-               +---------------+---------------+
-                               |
-                               v
-               Rendered in UI & Audit Inspector
-
----
+                 ┌─────────────────────────────────────┐
+                 │        React + Vite Frontend        │
+                 │       Command Center Dashboard      │
+                 │              :5173                  │
+                 └──────────────────┬──────────────────┘
+                                    │
+                              HTTP fetch()
+                                    │
+                                    ▼
+                 ┌─────────────────────────────────────┐
+                 │       Node.js + Express Backend     │
+                 │              :5000                  │
+                 │                                     │
+                 │   /api/chat                         │
+                 │   /api/scenario-test                │
+                 └───────────────┬─────────────────────┘
+                                 │
+                 ┌───────────────┴────────────────┐
+                 │                                │
+                 ▼                                ▼
+    ┌────────────────────────┐       ┌────────────────────────┐
+    │ airlineData.json       │       │   Google Gemini API     │
+    │                        │       │   gemini-3.6-flash      │
+    │ • Customer Profiles    │──────▶│                        │
+    │ • Booking Data         │       │ Intent Understanding   │
+    │ • Airline Policies    │       │ + Response Generation  │
+    └────────────────────────┘       └────────────┬───────────┘
+                                                  │
+                                                  ▼
+                              ┌──────────────────────────────┐
+                              │   Policy / Response          │
+                              │       Validation             │
+                              │                              │
+                              │ • Validate JSON response     │
+                              │ • Check policy constraints   │
+                              │ • Check escalation status    │
+                              └──────────────┬───────────────┘
+                                             │
+                                             ▼
+                              ┌──────────────────────────────┐
+                              │      Structured Response     │
+                              │                              │
+                              │ • Customer Reply             │
+                              │ • Actions Taken              │
+                              │ • Triggered Policies         │
+                              │ • Escalation Status          │
+                              │ • Escalation Reason          │
+                              └──────────────┬───────────────┘
+                                             │
+                                             ▼
+                 ┌──────────────────────────────────────────┐
+                 │             React Dashboard               │
+                 │                                          │
+                 │  Chat Window → Audit Inspector           │
+                 │  Actions Log → Policies → Resolution     │
+                 │                 Ticket                   │
+                 └──────────────────────────────────────────┘
 
 ## 📁 Project Structure
 
