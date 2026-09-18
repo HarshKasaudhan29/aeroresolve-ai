@@ -5,7 +5,7 @@ import ChatWindow from "./components/ChatWindow.jsx";
 import AuditInspector from "./components/AuditInspector.jsx";
 import ResolutionTicket from "./components/ResolutionTicket.jsx";
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://aeroresolve-ai.onrender.com";
 
 function getInitialTheme() {
   if (typeof window === "undefined") return "dark";

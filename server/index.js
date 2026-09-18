@@ -34,7 +34,7 @@ function getCustomerById(customerId) {
 // ---------------------------------------------------------------------------
 const apiKey = process.env.GEMINI_API_KEY;
 const genAI = apiKey ? new GoogleGenAI({ apiKey }) : null;
-const GEMINI_MODEL = "gemini-3.6-flash";
+const GEMINI_MODEL = "gemini-3.5-flash";
 
 // ---------------------------------------------------------------------------
 // Deterministic policy engine
