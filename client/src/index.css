@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Command-center color tokens. Space-separated RGB so Tailwind's
+   alpha-value modifiers (bg-cyan-400/10 etc.) keep working. Dark is
+   the default (:root); html.light overrides for light mode. */
+:root {
+  --c-base-950: 8 11 16;
+  --c-base-900: 10 14 20;
+  --c-base-800: 18 22 31;
+  --c-base-700: 26 32 41;
+  --c-base-600: 35 41 56;
+  --c-base-500: 51 59 77;
+
+  --c-ink-100: 231 235 243;
+  --c-ink-300: 183 191 207;
+  --c-ink-500: 136 146 166;
+  --c-ink-700: 92 100 120;
+
+  --c-amber-400: 242 169 59;
+  --c-amber-500: 219 146 35;
+  --c-cyan-400: 63 198 224;
+  --c-emerald-400: 53 208 127;
+  --c-rose-400: 255 92 92;
+
+  --glow-1: 63 198 224;
+  --glow-2: 242 169 59;
+  color-scheme: dark;
+}
+
+html.light {
+  --c-base-950: 238 241 246;
+  --c-base-900: 245 246 248;
+  --c-base-800: 255 255 255;
+  --c-base-700: 238 240 244;
+  --c-base-600: 220 224 232;
+  --c-base-500: 185 192 206;
+
+  --c-ink-100: 18 22 31;
+  --c-ink-300: 58 66 86;
+  --c-ink-500: 107 115 133;
+  --c-ink-700: 139 147 164;
+
+  --c-amber-500: 176 111 15;
+
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-base-900 text-ink-100 font-sans antialiased transition-colors duration-200;
+  background-image: radial-gradient(circle at 15% 0%, rgb(var(--glow-1) / 0.06), transparent 40%),
+    radial-gradient(circle at 85% 100%, rgb(var(--glow-2) / 0.05), transparent 45%);
+}
+
+::selection {
+  background: rgb(var(--c-cyan-400) / 0.35);
+}
+
+/* thin, quiet scrollbars for the panel columns */
+.thin-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.thin-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: rgb(var(--c-base-600));
+  border-radius: 999px;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 2.2s ease-in-out infinite;
+}

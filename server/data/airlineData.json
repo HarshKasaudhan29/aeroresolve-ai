@@ -1,0 +1,118 @@
+{
+  "systemDate": "2026-09-23",
+  "systemDateDisplay": "Wednesday, 23 September 2026",
+  "customers": [
+    {
+      "id": "priya",
+      "name": "Priya Nair",
+      "tier": "Gold",
+      "referenceCode": "SK4821X",
+      "email": "priya.nair@example.com",
+      "flightHistory": {
+        "totalFlights": 6,
+        "priorComplaints": [
+          {
+            "type": "Delayed baggage",
+            "resolution": "Resolved with voucher"
+          }
+        ]
+      },
+      "flight": {
+        "number": "SK-204",
+        "route": "Delhi → Goa",
+        "scheduledDeparture": "2026-09-23T18:40:00+05:30",
+        "status": "CANCELLED",
+        "statusReason": "Operational reasons",
+        "delayHours": 0,
+        "returnFlightAffected": false
+      }
+    },
+    {
+      "id": "arvind",
+      "name": "Arvind Kulkarni",
+      "tier": "Silver",
+      "referenceCode": "TR11908",
+      "email": "arvind.kulkarni@example.com",
+      "flightHistory": {
+        "totalFlights": 3,
+        "priorComplaints": []
+      },
+      "flight": {
+        "number": "SK-118",
+        "route": "Mumbai → Bengaluru",
+        "scheduledDeparture": "2026-09-23T07:10:00+05:30",
+        "status": "DELAYED",
+        "delayHours": 4,
+        "newDeparture": "2026-09-23T11:10:00+05:30",
+        "returnFlightAffected": false
+      }
+    },
+    {
+      "id": "meher",
+      "name": "Meher Kaur",
+      "tier": "Platinum",
+      "referenceCode": "WL7742",
+      "email": "meher.kaur@example.com",
+      "flightHistory": {
+        "totalFlights": 10,
+        "priorComplaints": [
+          {
+            "type": "Overbooking",
+            "resolution": "Resolved with tier upgrade"
+          }
+        ]
+      },
+      "flight": {
+        "number": "SK-305",
+        "route": "Delhi → Hyderabad",
+        "scheduledDeparture": "2026-09-23T14:00:00+05:30",
+        "status": "DELAYED",
+        "delayHours": 6,
+        "newDeparture": "2026-09-23T20:00:00+05:30",
+        "returnFlightAffected": false
+      }
+    }
+  ],
+  "policies": [
+    {
+      "id": "CANCELLATION",
+      "description": "On cancellation, the customer may choose free rebooking within 24 hours OR a full refund. The choice belongs to the customer."
+    },
+    {
+      "id": "DELAY_UNDER_3H",
+      "description": "Delay of less than 3 hours: ₹500 meal voucher."
+    },
+    {
+      "id": "DELAY_OVER_3H",
+      "description": "Delay of more than 3 hours: meal voucher + lounge access."
+    },
+    {
+      "id": "DELAY_OVER_5H",
+      "description": "Delay of more than 5 hours: meal voucher + hotel accommodation covering ONLY the delayed hours, not a full night's stay."
+    },
+    {
+      "id": "REFUND_POLICY",
+      "description": "Full refund processed within 7 business days to the original payment method only. Never to another payment method."
+    },
+    {
+      "id": "VOLUNTARY_REBOOKING_FARE",
+      "description": "Voluntary rebooking to a higher fare class requires the customer to pay the fare difference."
+    },
+    {
+      "id": "AGENT_WAIVER_LIMIT",
+      "description": "An agent may waive a maximum of ₹1,500 in compensation. Any waiver above ₹1,500 requires supervisor/human escalation."
+    },
+    {
+      "id": "TIER_PRIORITY_NO_COMPENSATION",
+      "description": "Gold and Platinum tier customers receive priority seat rebooking but NO additional financial compensation beyond standard policy."
+    },
+    {
+      "id": "LEGAL_THREAT_ESCALATION",
+      "description": "Any legal or formal complaint threat from a customer must trigger immediate escalation to a human supervisor."
+    },
+    {
+      "id": "NO_OVER_COMPENSATION",
+      "description": "The agent must never over-compensate a customer beyond what policy allows."
+    }
+  ]
+}
