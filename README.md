@@ -1,26 +1,211 @@
 # AeroResolve AI ✈️
+
 > An AI-powered, policy-grounded customer resolution command center for airline disruptions.
 
-[![Node.js](https://img.shields.io/badge/Node.js-v18%2B-green.svg)](https://nodejs.org/)
-[![React](https://img.shields.io/badge/React-v18%2B-blue.svg)](https://react.dev/)
-[![Gemini AI](https://img.shields.io/badge/Google%20Gemini-2.5--Flash-orange.svg)](https://aistudio.google.com/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC.svg)](https://tailwindcss.com/)
+AeroResolve AI is a full-stack AI customer-resolution platform designed to assist airline support teams and passengers during flight cancellations and delays.
 
-AeroResolve AI assists airline support teams and passengers by processing flight delay/cancellation queries. It applies strict, deterministic policy checks alongside Google Gemini's natural language understanding to issue vouchers, process refunds, and automatically escalate unauthorized edge cases.
+The system combines **React, Node.js/Express, Google Gemini, deterministic policy validation, customer booking data, audit logging, and escalation workflows** to provide controlled and explainable resolutions.
 
----
-
-## 🌟 Key Features
-
-* **Deterministic Policy Engine:** AI reasoning is strictly validated and corrected by backend policy rules to eliminate hallucinations.
-* **Dual Theme UI:** Light & Dark mode support designed as an aviation operations command center.
-* **Grounded AI Interactions:** Powered by `gemini-2.5-flash` with structured system prompts containing customer tiers and flight entitlements.
-* **Live Audit Inspector:** Displays active customer context, actions log, triggered policies, and real-time escalation status.
-* **Resolution Summary Ticket:** Generates an internal case record ticket for each resolution attempt.
-* **Pre-built Scenario Tests:** One-click deterministic policy checks for instant validation.
+Unlike a generic chatbot, AeroResolve AI does not simply accept every customer request. It evaluates the request against predefined airline policies, identifies allowed and disallowed actions, and escalates cases that require human intervention.
 
 ---
 
+## 📌 Table of Contents
+
+- [Project Overview](#-project-overview)
+- [Objectives](#-objectives)
+- [Key Features](#-key-features)
+- [Technology Stack](#-technology-stack)
+- [System Architecture](#-system-architecture)
+- [Project Structure](#-project-structure)
+- [Data & Ground Truth](#-data--ground-truth)
+- [Business Policies](#-business-policies)
+- [AI Response Format](#-ai-response-format)
+- [Policy Validation Engine](#-policy-validation-engine)
+- [API Reference](#-api-reference)
+- [Pre-configured Scenarios](#-pre-configured-scenarios)
+- [Installation](#-installation)
+- [Environment Variables](#-environment-variables)
+- [Running the Application](#-running-the-application)
+- [How the System Works](#-how-the-system-works)
+- [Example Interaction](#-example-interaction)
+- [Safety & Escalation](#-safety--escalation)
+- [Troubleshooting](#-troubleshooting)
+- [Limitations](#-limitations)
+- [Future Enhancements](#-future-enhancements)
+- [Conclusion](#-conclusion)
+
+---
+
+# ✈️ Project Overview
+
+Airline disruptions such as flight cancellations and long delays often require customer-service agents to make decisions based on multiple policies.
+
+AeroResolve AI provides an AI-assisted command center that can:
+
+- Understand customer requests using natural language.
+- Retrieve the selected customer's booking context.
+- Apply predefined airline policies.
+- Determine eligible benefits and resolutions.
+- Reject requests outside policy.
+- Detect situations requiring human escalation.
+- Maintain a live audit trail.
+- Generate an internal resolution summary ticket.
+
+The application is designed as a **policy-grounded AI agent**, rather than an unrestricted conversational chatbot.
+
+---
+
+# 🎯 Objectives
+
+The primary objectives of AeroResolve AI are:
+
+1. Provide an intelligent conversational interface for airline disruption cases.
+2. Ground AI responses in customer and booking information.
+3. Apply deterministic business rules to important decisions.
+4. Prevent unauthorized compensation or fare waivers.
+5. Automatically identify cases requiring human intervention.
+6. Provide transparent action and policy logs.
+7. Generate an auditable resolution summary for each case.
+8. Demonstrate how generative AI can be integrated with deterministic business logic.
+
+---
+
+# 🌟 Key Features
+
+## 1. Customer Context Management
+
+The system contains predefined customer profiles with:
+
+- Customer name
+- Loyalty tier
+- Booking/reference number
+- Contact information
+- Travel history
+- Flight information
+- Current disruption status
+
+Supported customers:
+
+- Priya Nair — Gold
+- Arvind Kulkarni — Silver
+- Meher Kaur — Platinum
+
+---
+
+## 2. AI-Powered Chat
+
+Customers can interact with the AeroResolve AI agent using natural language.
+
+Example:
+
+> "My flight SK-204 was cancelled. Am I eligible for a full refund and a free Business Class upgrade?"
+
+The agent analyzes the request and produces a structured resolution.
+
+---
+
+## 3. Policy-Grounded Responses
+
+The AI receives the relevant customer context and predefined airline policies.
+
+The system is designed to prevent the model from inventing:
+
+- Refund eligibility
+- Compensation
+- Hotel benefits
+- Fare waivers
+- Loyalty benefits
+- Booking information
+
+---
+
+## 4. Deterministic Policy Validation
+
+AI output is checked by backend validation logic.
+
+The validation layer can correct or reject AI decisions that conflict with known business rules.
+
+This provides an additional layer of control between the generative model and the final UI response.
+
+---
+
+## 5. Live Audit Inspector
+
+The right-side Audit Inspector provides visibility into:
+
+- Active customer
+- PNR/reference
+- Loyalty tier
+- Flight
+- Route
+- Actions taken
+- Triggered policies
+- Escalation status
+- Escalation reason
+
+This makes the AI decision process easier to inspect.
+
+---
+
+## 6. Resolution Summary Ticket
+
+After a resolution or escalation, the application can generate an internal case summary containing:
+
+- Ticket ID
+- Customer
+- Loyalty tier
+- Flight
+- Route
+- Issue
+- Actions taken
+- Policies applied
+- Escalation status
+- Escalation reason
+
+> This is an internal case record and is not a real airline boarding pass or ticket.
+
+---
+
+## 7. Scenario Testing
+
+Three predefined scenarios are available for quick demonstration and validation.
+
+These scenarios reproduce the core assignment test cases without requiring manual conversation setup.
+
+---
+
+## 8. Dual Theme Interface
+
+The dashboard supports:
+
+- Dark mode
+- Light mode
+
+The UI is designed as an aviation operations command center.
+
+---
+
+# 🧰 Technology Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React |
+| Build Tool | Vite |
+| Styling | Tailwind CSS |
+| Backend | Node.js |
+| API Framework | Express.js |
+| AI | Google Gemini API |
+| Data Layer | JSON |
+| API Communication | REST / HTTP fetch |
+| Environment Configuration | dotenv |
+| Cross-Origin Support | CORS |
+
+---
+
+# 🏗️ System Architecture
+
+```text
                  ┌─────────────────────────────────────┐
                  │        React + Vite Frontend        │
                  │       Command Center Dashboard      │
@@ -36,6 +221,8 @@ AeroResolve AI assists airline support teams and passengers by processing flight
                  │                                     │
                  │   /api/chat                         │
                  │   /api/scenario-test                │
+                 │   /api/health                       │
+                 │   /api/customers                    │
                  └───────────────┬─────────────────────┘
                                  │
                  ┌───────────────┴────────────────┐
@@ -78,53 +265,3 @@ AeroResolve AI assists airline support teams and passengers by processing flight
                  │  Actions Log → Policies → Resolution     │
                  │                 Ticket                   │
                  └──────────────────────────────────────────┘
-
-## 📁 Project Structure
-
-```text
-aeroresolve-ai/
-├── client/                      # React + Vite Frontend
-│   ├── public/                  # Public assets
-│   ├── src/
-│   │   ├── components/          # Reusable UI Components
-│   │   │   ├── AuditInspector.jsx   # Audit logs & policy triggers
-│   │   │   ├── ChatWindow.jsx       # Chat messaging interface
-│   │   │   ├── Header.jsx           # Top header & Light/Dark toggle
-│   │   │   ├── ProfileSwitcher.jsx  # Customer selection panel
-│   │   │   └── ResolutionTicket.jsx # Generated internal resolution record
-│   │   ├── App.jsx              # Main App layout & theme state
-│   │   ├── index.css            # Tailwind directives & global styles
-│   │   └── main.jsx             # React entry point
-│   ├── package.json             # Frontend dependencies & scripts
-│   ├── tailwind.config.js       # Tailwind configuration
-│   └── vite.config.js           # Vite development server settings
-│
-├── server/                      # Node.js + Express Backend
-│   ├── data/
-│   │   └── airlineData.json     # Ground-truth dataset (Customers, Flights, Policies)
-│   ├── .env                     # Server environment variables (Git ignored)
-│   ├── index.js                 # Express server, Gemini client & Policy Engine
-│   └── package.json             # Backend dependencies & scripts
-│
-├── .gitignore                   # Root Git ignore rules
-└── README.md                    # Project documentation
-
-⚙️ Environment VariablesCreate a .env file in the server/ directory:Code snippetPORT=5000
-GEMINI_API_KEY=your_google_gemini_api_key_here
-🚀 Getting StartedPrerequisitesNode.js: v18.0.0 or highernpm: v9.0.0 or higherInstallation & Execution1. Backend SetupBash# Navigate to server directory
-cd server
-
-# Install dependencies
-npm install
-
-# Start backend server
-npm run dev
-The API server will start on http://localhost:5000.2. Frontend SetupIn a new terminal tab:Bash# Navigate to client directory
-cd client
-
-# Install dependencies
-npm install
-
-# Start Vite frontend
-npm run dev
-The dashboard will open on http://localhost:5173.🔗 API ReferenceMethodEndpointDescriptionGET/api/healthVerifies server status & Gemini API key configuration.GET/api/customersFetches ground-truth customer roster and flight status.POST/api/chatSends customer prompt; returns policy-corrected AI resolution.POST/api/scenario-testRuns a fixed deterministic policy test (scenarioId: 1 | 2 | 3).🧪 Pre-configured Test ScenariosScenarioPassengerFlight StatusRequestExpected System BehaviorScenario 1Priya Nair (Gold)SK-204 (Cancelled)Full refund + Free Business Class upgradeRefund approved, Upgrade denied, EscalatedScenario 2Arvind Kulkarni (Silver)SK-118 (Delayed 4h)Overnight hotel stay requestMeal voucher approved, Hotel denied ($\le$5h delay), No escalationScenario 3Meher Kaur (Platinum)SK-305 (Delayed 6h)Full-night hotel + ₹2,000 waiver askMeal & partial stay approved, Waiver exceeds limit, Escalated🛡️ Policy Engine Safety MeasuresZero Hallucination Guarantee: The backend policy validator (validateAndCorrect()) overrides Gemini outputs if the AI grants unauthorized waivers, improper refund accounts, or incorrect class upgrades.Graceful Fallbacks: If the AI model response is malformed or times out, the backend defaults to a safe Human Escalation Ticket without crashing the app.
